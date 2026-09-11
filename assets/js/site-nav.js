@@ -6,15 +6,21 @@
    from siteConfig, the same way the original site's nav.js worked.
    Include config.js before this file.
 
-   NOTE ON TIMING: this script is loaded with `defer`, which already
-   guarantees the DOM is fully parsed by the time it runs — so render
-   calls happen directly below, not inside a DOMContentLoaded listener.
-   That matters because main.js (loaded without `defer`, at the bottom
-   of <body>) registers its own DOMContentLoaded handler earlier in the
-   page's script order, and that handler wires up the submenu "opener"
-   click toggle by querying the menu markup. If we waited for
-   DOMContentLoaded here too, our handler would run *after* main.js's,
-   and main.js would find an empty menu and never bind the toggle.
+   NOTE ON TIMING: main.js (the template's own script) reads and
+   modifies #sidebar and #menu the instant it runs — appending the
+   mobile hamburger toggle button and binding the submenu "opener"
+   click handlers — with no DOMContentLoaded wrapper of its own. So
+   this script must run and finish *before* main.js executes, or two
+   things break: main.js appends the toggle button to an empty
+   sidebar, which this script's `innerHTML =` then wipes out, leaving
+   mobile visitors with no way to open the nav at all; and the opener
+   click handler binds to a menu that doesn't have its <ul> children
+   yet, so the Teaching submenu never expands.
+
+   That's why this file is loaded as a plain (non-deferred) script at
+   the bottom of <body>, positioned *before* main.js's <script> tag —
+   not in <head> with `defer`, and not deferred to DOMContentLoaded.
+   Keep it there if you ever reorder the scripts.
 ============================================================================= */
 
 function inPagesDir() {
