@@ -20,7 +20,7 @@ const siteConfig = {
     // simple regex/text scrapers that don't execute JavaScript.
     emailEncoded: "Uy5WZW5uQHd1c3RsLmVkdQ==",
     orcid:       "0009-0009-3443-4919",
-    github:      "https://github.com/investigatorwho",
+    github:      "https://github.com/Stella-Venn",
     bluesky:     "https://bsky.app/profile/formallyfuctional.bsky.social",
     linkedin:    "https://www.linkedin.com/in/stella-v-0333621b1/",
     cvFile:      "assets/pdfs/cv.pdf",
