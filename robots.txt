@@ -1,0 +1,11 @@
+# Allow normal page crawling, but keep image-search bots out of the
+# photo library — photographs on this site are copyrighted and not
+# licensed for reuse.
+User-agent: Googlebot-Image
+Disallow: /assets/images/
+
+User-agent: Bingbot
+Disallow: /assets/images/
+
+User-agent: *
+Disallow:

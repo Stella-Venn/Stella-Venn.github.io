@@ -1,0 +1,73 @@
+/* Riddle modal for the bird easter egg (birb.js). Colors match the
+   Editorial template's palette (assets/sass/libs/_vars.scss) by hand,
+   since this file isn't run through the sass build. */
+
+.birb-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 10001;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.birb-modal__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(61, 68, 73, 0.6);
+}
+
+.birb-modal__dialog {
+	position: relative;
+	background: #ffffff;
+	border-radius: 0.375em;
+	box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.25);
+	max-width: 28em;
+	width: calc(100% - 3em);
+	padding: 2.5em;
+	text-align: center;
+}
+
+.birb-modal__close {
+	position: absolute;
+	top: 0.75em;
+	right: 0.75em;
+	background: none;
+	border: none;
+	color: #7f888f;
+	font-size: 1.5em;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0.25em;
+}
+
+.birb-modal__close:hover {
+	color: #3d4449;
+}
+
+.birb-modal__title {
+	margin-bottom: 0.5em;
+}
+
+.birb-modal__riddle {
+	color: #3d4449;
+	font-style: italic;
+	margin-bottom: 1.5em;
+}
+
+.birb-modal__form {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	align-items: center;
+}
+
+.birb-modal__input {
+	width: 100%;
+}
+
+.birb-modal__feedback {
+	margin-top: 1em;
+	color: #f56a6a;
+	font-size: 0.9em;
+}

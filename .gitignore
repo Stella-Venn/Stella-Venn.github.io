@@ -1,0 +1,9 @@
+# Archived copy of the previous version of the site — kept locally for
+# reference, not part of the published site.
+/_old-site/
+
+# Claude Code project settings — local tooling config, not site content.
+/.claude/
+
+# macOS Finder metadata
+.DS_Store
