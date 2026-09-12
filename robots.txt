@@ -9,3 +9,5 @@ Disallow: /assets/images/
 
 User-agent: *
 Disallow:
+
+Sitemap: https://stella-venn.github.io/sitemap.xml
