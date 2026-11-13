@@ -33,6 +33,7 @@ const siteConfig = {
     home:         { enabled: true,  label: "Home",         file: "index.html" },
     about:        { enabled: false, label: "About",        file: "about.html" },
     research:     { enabled: true,  label: "Research",     file: "research.html" },
+    students:     { enabled: true,  label: "Students",     file: "students.html" },
     publications: { enabled: false, label: "Publications", file: "publications.html" },
     teaching:     { enabled: false, label: "Teaching", children: {
                       students: { enabled: true, label: "Students", file: "teaching-students.html" },

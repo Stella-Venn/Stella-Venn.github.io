@@ -49,6 +49,23 @@ function renderEmailPlaceholders() {
   document.querySelectorAll('[data-email-text]').forEach(el => {
     el.textContent = email;
   });
+
+  // Click-to-reveal: <a href="#" data-email-reveal="BASE64">Show email</a>
+  // The address stays hidden (and base64-encoded in the source) until the
+  // visitor clicks; the first click reveals it as a mailto link, and later
+  // clicks open the mail client as normal. Leave the attribute empty
+  // (<a href="#" data-email-reveal>) to use the site owner's address
+  // from config.js.
+  document.querySelectorAll('[data-email-reveal]').forEach(el => {
+    el.addEventListener('click', e => {
+      if (el.dataset.revealed) return;
+      e.preventDefault();
+      const addr = el.dataset.emailReveal ? atob(el.dataset.emailReveal) : getEmail();
+      el.href = `mailto:${addr}`;
+      el.textContent = addr;
+      el.dataset.revealed = 'true';
+    });
+  });
 }
 
 function pageHref(file) {
@@ -143,7 +160,7 @@ function renderSidebar() {
         </header>
         <p>${info.department}<br />${info.institution}</p>
         <ul class="contact">
-          <li class="icon solid fa-envelope"><a href="mailto:${getEmail()}">${getEmail()}</a></li>
+          <li class="icon solid fa-envelope"><a href="#" data-email-reveal>Show email</a></li>
           <li class="icon solid fa-id-badge"><a href="https://orcid.org/${info.orcid}" target="_blank" rel="noopener noreferrer">ORCID: ${info.orcid}</a></li>
           <li class="icon brands fa-github"><a href="${info.github}" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li class="icon brands fa-linkedin-in"><a href="${info.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
