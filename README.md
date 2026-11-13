@@ -69,6 +69,10 @@ A few deliberate choices to keep personal info off basic scrapers:
 - The contact email is base64-encoded in `config.js` and only
   decoded/rendered client-side (`getEmail()` in `assets/js/site-nav.js`),
   so it never sits as plain text in a file a scraper can read directly.
+- No email address on the site is ever written as plain text. Other
+  people's addresses (e.g. students) are base64-encoded in a
+  `data-email-reveal` attribute, and every email link stays hidden
+  behind "Show email" until the visitor clicks it.
 - Every photo has had its EXIF/GPS metadata stripped before being
   added to the site.
 - Every page sets `<meta name="robots" content="noimageindex">`, and
